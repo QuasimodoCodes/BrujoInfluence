@@ -4,7 +4,9 @@ A digital agency website showcasing influencer-focused services with a unique Me
 
 ## 🔗 Live Demo
 
-Visit the live site: [Brujo Influence](https://quasimodocodes.github.io/BrujoInfluence/)
+Visit the live site: [Brujo Influence (GitHub Pages)](https://quasimodocodes.github.io/BrujoInfluence/)
+
+_Note: We're in the process of setting up our custom domain (brujoinfluence.com). In the meantime, you can access the site via the GitHub Pages URL above._
 
 ## ✨ Features
 
