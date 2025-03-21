@@ -1,209 +1,159 @@
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 
-interface Project {
-  id: number;
-  title: string;
-  category: string;
-  image: string;
-  link: string;
-  description: string;
-}
-
-const projectData: Project[] = [
-  {
-    id: 1,
-    title: "FashionFluence",
-    category: "Fashion",
-    image:
-      "https://images.unsplash.com/photo-1508427953056-b00b8d78ebf5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-    link: "#",
-    description:
-      "Custom e-commerce site with lookbook and affiliate integration for a fashion influencer with 1M+ followers.",
-  },
-  {
-    id: 2,
-    title: "TravelWithMe",
-    category: "Travel",
-    image:
-      "https://images.unsplash.com/photo-1503220317375-aaad61436b1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-    link: "#",
-    description:
-      "Interactive travel blog with custom map integrations and monetized destination guides.",
-  },
-  {
-    id: 3,
-    title: "CulinaryCreator",
-    category: "Food",
-    image:
-      "https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-    link: "#",
-    description:
-      "Recipe platform with membership area, cooking tutorials, and integrated affiliate product recommendations.",
-  },
-  {
-    id: 4,
-    title: "FitnessFusion",
-    category: "Fitness",
-    image:
-      "https://images.unsplash.com/photo-1518310952931-b1de897abd5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80",
-    link: "#",
-    description:
-      "Fitness platform with subscription model, workout tracking app, and community features.",
-  },
-  {
-    id: 5,
-    title: "BeautyBrand",
-    category: "Beauty",
-    image:
-      "https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80",
-    link: "#",
-    description:
-      "Custom beauty brand website with product launches, tutorials, and e-commerce functionality.",
-  },
-  {
-    id: 6,
-    title: "CreativeCorner",
-    category: "Art",
-    image:
-      "https://images.unsplash.com/photo-1513364776144-60967b0f800f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80",
-    link: "#",
-    description:
-      "Digital portfolio with NFT integration and online course platform for a digital artist.",
-  },
-];
-
 const Showcase: React.FC = () => {
-  const [filter, setFilter] = useState<string>("all");
+  const techStack = [
+    {
+      category: "Frontend",
+      tools: [
+        { name: "React", icon: "/images/tech/react.svg", fallback: "⚛️" },
+        { name: "Next.js", icon: "/images/tech/nextjs.svg", fallback: "▲" },
+        { name: "Vue", icon: "/images/tech/vue.svg", fallback: "🟢" },
+        {
+          name: "Tailwind CSS",
+          icon: "/images/tech/tailwind.svg",
+          fallback: "🌊",
+        },
+      ],
+    },
+    {
+      category: "Backend",
+      tools: [
+        { name: "Node.js", icon: "/images/tech/nodejs.svg", fallback: "🟩" },
+        { name: "Express", icon: "/images/tech/express.svg", fallback: "🚂" },
+        { name: "GraphQL", icon: "/images/tech/graphql.svg", fallback: "◼️" },
+        { name: "MongoDB", icon: "/images/tech/mongodb.svg", fallback: "🍃" },
+      ],
+    },
+    {
+      category: "CMS",
+      tools: [
+        { name: "Sanity", icon: "/images/tech/sanity.svg", fallback: "🅢" },
+        {
+          name: "WordPress",
+          icon: "/images/tech/wordpress.svg",
+          fallback: "🔠",
+        },
+        { name: "Strapi", icon: "/images/tech/strapi.svg", fallback: "🟨" },
+        {
+          name: "Contentful",
+          icon: "/images/tech/contentful.svg",
+          fallback: "©️",
+        },
+      ],
+    },
+    {
+      category: "E-commerce",
+      tools: [
+        { name: "Shopify", icon: "/images/tech/shopify.svg", fallback: "🛒" },
+        {
+          name: "WooCommerce",
+          icon: "/images/tech/woocommerce.svg",
+          fallback: "🔄",
+        },
+        { name: "Stripe", icon: "/images/tech/stripe.svg", fallback: "💳" },
+        { name: "PayPal", icon: "/images/tech/paypal.svg", fallback: "💰" },
+      ],
+    },
+  ];
 
-  // Create unique categories array without using spread on Set
-  const uniqueCategories = Array.from(
-    new Set(projectData.map((project) => project.category))
-  );
-  const categories = ["all", ...uniqueCategories];
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
 
-  const filteredProjects =
-    filter === "all"
-      ? projectData
-      : projectData.filter((project) => project.category === filter);
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+    },
+  };
 
   return (
-    <section id="showcase" className="py-24 bg-dark relative overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-10">
-        <div className="absolute top-10 left-10 w-40 h-40 bg-primary rounded-full filter blur-3xl"></div>
-        <div className="absolute bottom-10 right-10 w-60 h-60 bg-secondary rounded-full filter blur-3xl"></div>
-      </div>
+    <section
+      id="tech-stack"
+      className="py-20 bg-gray-50 relative overflow-hidden"
+    >
+      {/* Norwegian-inspired geometric shapes */}
+      <div className="absolute top-0 left-0 w-40 h-40 bg-yellow-400 rounded-full opacity-10 -translate-x-1/2 -translate-y-1/2"></div>
+      <div className="absolute bottom-0 right-0 w-60 h-60 bg-red-500 rounded-full opacity-10 translate-x-1/2 translate-y-1/2"></div>
 
-      <div className="container relative z-10">
-        <div className="text-center mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-          >
-            <h2 className="text-3xl md:text-5xl font-bold mb-5 tracking-tight text-white">
-              Our <span className="text-primary">Showcase</span>
-            </h2>
-            <div className="w-24 h-1 bg-primary mx-auto mb-8"></div>
-            <p className="text-gray-300 max-w-3xl mx-auto text-lg">
-              Explore our portfolio of custom digital solutions we've created
-              for influencers across various niches. Each project is tailored to
-              the unique needs and brand of the creator.
-            </p>
-          </motion.div>
-        </div>
+      {/* Mexican-inspired pattern */}
+      <div
+        className="absolute inset-0 opacity-5"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          backgroundSize: "60px 60px",
+        }}
+      ></div>
 
-        {/* Category filter tabs */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
-          {categories.map((category, index) => (
-            <motion.button
-              key={index}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => setFilter(category)}
-              className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 capitalize
-                ${
-                  filter === category
-                    ? "bg-primary text-white shadow-glow"
-                    : "bg-gray-800 text-gray-300 hover:bg-gray-700"
-                }`}
-            >
-              {category}
-            </motion.button>
-          ))}
-        </div>
+      <div className="container mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl font-bold mb-4 text-gray-800">
+            Our Tech Stack
+          </h2>
+          <p className="max-w-2xl mx-auto text-gray-600">
+            We leverage powerful technologies to build high-performance,
+            scalable digital platforms for influencers around the world.
+          </p>
+        </motion.div>
 
-        {/* Projects grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project) => (
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+        >
+          {techStack.map((stack, index) => (
             <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: project.id * 0.1 }}
-              whileHover={{ y: -10 }}
-              className="bg-gray-900 rounded-xl overflow-hidden shadow-xl group"
+              key={index}
+              variants={itemVariants}
+              className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
             >
-              <div className="relative overflow-hidden h-64">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-dark to-transparent opacity-70"></div>
-                <div className="absolute bottom-4 left-4 right-4">
-                  <h3 className="text-xl font-bold text-white mb-1">
-                    {project.title}
-                  </h3>
-                  <span className="inline-block px-3 py-1 text-xs font-medium bg-primary/20 text-primary rounded-full">
-                    {project.category}
-                  </span>
-                </div>
-              </div>
               <div className="p-6">
-                <p className="text-gray-300 mb-4">{project.description}</p>
-                <a
-                  href={project.link}
-                  className="inline-flex items-center text-primary hover:text-primary-dark font-medium transition-colors"
-                >
-                  View Project
-                  <svg
-                    className="w-4 h-4 ml-2"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M14 5l7 7m0 0l-7 7m7-7H3"
-                    />
-                  </svg>
-                </a>
+                <h3 className="text-xl font-semibold mb-4 text-[#1A5F7A]">
+                  {stack.category}
+                </h3>
+                <div className="grid grid-cols-2 gap-4">
+                  {stack.tools.map((tool, toolIndex) => (
+                    <div
+                      key={toolIndex}
+                      className="flex flex-col items-center space-y-2"
+                    >
+                      <div className="w-12 h-12 flex items-center justify-center bg-gray-100 rounded-full">
+                        <img
+                          src={tool.icon}
+                          alt={tool.name}
+                          className="w-6 h-6"
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.onerror = null;
+                            target.style.display = "none";
+                            target.parentElement!.innerHTML = `<span class="text-xl">${tool.fallback}</span>`;
+                          }}
+                        />
+                      </div>
+                      <span className="text-sm text-gray-600">{tool.name}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </motion.div>
           ))}
-        </div>
-
-        <div className="text-center mt-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            <a
-              href="#contact"
-              className="inline-block px-8 py-4 bg-primary hover:bg-primary-dark text-white font-semibold rounded-xl transition-all duration-300 shadow-glow hover:shadow-lg"
-            >
-              Ready to build your digital presence?
-            </a>
-          </motion.div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

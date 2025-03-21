@@ -1,25 +1,44 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-dark text-white py-12">
-      <div className="container">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div>
-            <h3 className="text-xl font-bold mb-4">BrujoInfluence</h3>
-            <p className="mb-4 text-gray-300">
-              Empowering influencers with cutting-edge digital solutions to grow
-              their brand and maximize their online impact.
+    <footer className="bg-[#1A1A2E] text-white py-16 relative overflow-hidden">
+      {/* Norwegian-inspired pattern */}
+      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#1A5F7A] via-[#EC2A4B] to-[#FFC300]"></div>
+
+      {/* Mexican-inspired decorative elements */}
+      <div className="absolute top-12 right-12 w-24 h-24 bg-[#EC2A4B]/5 rotate-45"></div>
+      <div className="absolute bottom-12 left-12 w-32 h-32 bg-[#FFC300]/5 rotate-45"></div>
+
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="mb-6">
+              <span className="font-bold text-2xl tracking-tight flex items-center">
+                <span className="text-[#1A5F7A] mr-1">Brujo</span>
+                <span className="text-[#EC2A4B]">Influence</span>
+              </span>
+            </div>
+            <p className="mb-6 text-gray-300">
+              Blending Mexican creativity with Norwegian precision to build
+              stunning digital experiences for influencers worldwide.
             </p>
             <div className="flex space-x-4">
               {/* Instagram */}
               <a
-                href="https://www.instagram.com/"
+                href="https://www.instagram.com/brujoinfluence/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white hover:text-primary"
+                className="text-white hover:text-[#EC2A4B] transition-colors duration-300"
+                aria-label="Instagram"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -31,46 +50,13 @@ const Footer: React.FC = () => {
                 </svg>
               </a>
 
-              {/* Twitter/X */}
-              <a
-                href="https://twitter.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:text-primary"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                </svg>
-              </a>
-
-              {/* TikTok */}
-              <a
-                href="https://www.tiktok.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:text-primary"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
-                </svg>
-              </a>
-
               {/* LinkedIn */}
               <a
-                href="https://www.linkedin.com/"
+                href="https://www.linkedin.com/company/brujoinfluence/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white hover:text-primary"
+                className="text-white hover:text-[#1A5F7A] transition-colors duration-300"
+                aria-label="LinkedIn"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -81,83 +67,196 @@ const Footer: React.FC = () => {
                   <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
                 </svg>
               </a>
-            </div>
-          </div>
 
-          <div>
-            <h3 className="text-xl font-bold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
-              <li>
-                <a href="#home" className="text-gray-300 hover:text-primary">
-                  Home
-                </a>
-              </li>
-              <li>
-                <a href="#about" className="text-gray-300 hover:text-primary">
-                  About
-                </a>
-              </li>
+              {/* Behance */}
+              <a
+                href="https://www.behance.net/brujoinfluence"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white hover:text-[#FFC300] transition-colors duration-300"
+                aria-label="Behance"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14h-8.027c.13 3.211 3.483 3.312 4.588 2.029h3.168zm-7.686-4h4.965c-.105-1.547-1.136-2.219-2.477-2.219-1.466 0-2.277.768-2.488 2.219zm-9.574 6.988h-6.466v-14.967h6.953c5.476.081 5.58 5.444 2.72 6.906 3.461 1.26 3.577 8.061-3.207 8.061zm-3.466-8.988h3.584c2.508 0 2.906-3-.312-3h-3.272v3zm3.391 3h-3.391v3.016h3.341c3.055 0 2.868-3.016.05-3.016z" />
+                </svg>
+              </a>
+
+              {/* Twitter/X */}
+              <a
+                href="https://twitter.com/brujoinfluence"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white hover:text-[#EC2A4B] transition-colors duration-300"
+                aria-label="Twitter"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+                </svg>
+              </a>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            <h3 className="text-xl font-bold mb-6">Quick Links</h3>
+            <ul className="space-y-3">
               <li>
                 <a
                   href="#services"
-                  className="text-gray-300 hover:text-primary"
+                  className="text-gray-300 hover:text-[#EC2A4B] transition-colors duration-300 flex items-center"
                 >
+                  <span className="mr-2">→</span>
                   Services
                 </a>
               </li>
               <li>
                 <a
                   href="#portfolio"
-                  className="text-gray-300 hover:text-primary"
+                  className="text-gray-300 hover:text-[#EC2A4B] transition-colors duration-300 flex items-center"
                 >
+                  <span className="mr-2">→</span>
                   Portfolio
                 </a>
               </li>
               <li>
                 <a
-                  href="#testimonials"
-                  className="text-gray-300 hover:text-primary"
+                  href="#features"
+                  className="text-gray-300 hover:text-[#EC2A4B] transition-colors duration-300 flex items-center"
                 >
-                  Success Stories
+                  <span className="mr-2">→</span>
+                  Features
                 </a>
               </li>
               <li>
-                <a href="#contact" className="text-gray-300 hover:text-primary">
+                <a
+                  href="#about"
+                  className="text-gray-300 hover:text-[#EC2A4B] transition-colors duration-300 flex items-center"
+                >
+                  <span className="mr-2">→</span>
+                  About Us
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#contact"
+                  className="text-gray-300 hover:text-[#EC2A4B] transition-colors duration-300 flex items-center"
+                >
+                  <span className="mr-2">→</span>
                   Contact
                 </a>
               </li>
             </ul>
-          </div>
+          </motion.div>
 
-          <div>
-            <h3 className="text-xl font-bold mb-4">Contact Information</h3>
-            <address className="not-italic text-gray-300">
-              <p className="mb-2">
-                Email:{" "}
-                <a
-                  href="mailto:contact@brujoinfluence.com"
-                  className="hover:text-primary"
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <h3 className="text-xl font-bold mb-6">Contact Information</h3>
+            <address className="not-italic text-gray-300 space-y-4">
+              <p className="flex items-start">
+                <svg
+                  className="w-5 h-5 mr-3 text-[#EC2A4B] mt-1 flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  contact@brujoinfluence.com
-                </a>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  />
+                </svg>
+                <span>
+                  <a
+                    href="mailto:hello@brujoinfluence.com"
+                    className="hover:text-[#EC2A4B] transition-colors duration-300"
+                  >
+                    hello@brujoinfluence.com
+                  </a>
+                </span>
               </p>
-              <p className="mb-2">
-                Phone:{" "}
-                <a href="tel:+12345678901" className="hover:text-primary">
-                  +1 (234) 567-8901
-                </a>
+              <p className="flex items-start">
+                <svg
+                  className="w-5 h-5 mr-3 text-[#EC2A4B] mt-1 flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                  />
+                </svg>
+                <span>
+                  <a
+                    href="tel:+4712345678"
+                    className="hover:text-[#EC2A4B] transition-colors duration-300"
+                  >
+                    +47 123 45 678
+                  </a>
+                </span>
               </p>
-              <p>Los Angeles, CA</p>
+              <p className="flex items-start">
+                <svg
+                  className="w-5 h-5 mr-3 text-[#EC2A4B] mt-1 flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                  />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                </svg>
+                <span>Oslo, Norway & Mexico City, Mexico</span>
+              </p>
             </address>
-          </div>
+          </motion.div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-gray-700 text-center text-gray-400">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="mt-16 pt-8 border-t border-gray-800 text-center text-gray-400"
+        >
           <p>
-            &copy; {currentYear} BrujoInfluence - Elevating Influencer Brands.
-            All rights reserved.
+            &copy; {currentYear} Brujo Influence - Where Norwegian precision
+            meets Mexican creativity. All rights reserved.
           </p>
-        </div>
+        </motion.div>
       </div>
     </footer>
   );

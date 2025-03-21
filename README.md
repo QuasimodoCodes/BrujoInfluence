@@ -1,101 +1,58 @@
-# BrujoInfluence
+# Brujo Influence
 
-A showcase website for influencer-focused digital services. This modern, responsive website is built with React, TypeScript, and Tailwind CSS, showcasing our capabilities in creating cutting-edge digital solutions for content creators and influencers.
+A digital agency website showcasing influencer-focused services with a unique Mexican-Norwegian design aesthetic.
 
 ## Features
 
-- Modern, responsive design optimized for all devices
-- Interactive UI elements with Framer Motion animations
-- Comprehensive service showcase for influencer-specific solutions
-- Portfolio section with filtering capabilities
-- Contact form with form validation
-- Testimonials from past clients
+- Modern, responsive design with Mexican and Norwegian cultural influences
+- Engaging animations powered by Framer Motion
+- Component-based architecture using React and TypeScript
+- Styled with Tailwind CSS for rapid development and custom design elements
+- Optimized for performance, SEO, and accessibility
 
-## Services Showcased
+## Tech Stack
 
-- Custom Website Development
-- Mobile App Development
-- Monetization Solutions
-- Brand Identity Design
-- Analytics & Growth Tools
-- Social Media Integration
-
-## Technologies Used
-
-- React 19
+- React
 - TypeScript
 - Tailwind CSS
-- Framer Motion
-- EmailJS for form submissions
-- React Router for navigation
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js 16 or higher
-- npm or yarn
-
-### Installation
-
-1. Clone the repository
-
-```bash
-git clone https://github.com/QuasimodoCodes/BrujoInfluence.git
-cd BrujoInfluence/Previe_page
-```
-
-2. Install dependencies
-
-```bash
-npm install
-# or
-yarn install
-```
-
-3. Start the development server
-
-```bash
-npm start
-# or
-yarn start
-```
-
-4. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Framer Motion for animations
+- PostCSS for CSS processing
 
 ## Project Structure
 
-- `/src/components/sections` - Main page sections
-- `/src/components/ui` - Reusable UI components
-- `/src/components/layout` - Layout components (Header, Footer)
+- `/components`: Reusable UI components
+  - `/layout`: Header, Footer, and layout components
+  - `/sections`: Main page sections (Hero, Services, Portfolio, etc.)
+- `/services`: Service-related functionality
+- `/public/images`: Static images used throughout the site
 
-## Deployment
+## Getting Started
 
-The site is built for optimal performance and can be deployed to any modern hosting platform:
+1. Install dependencies:
 
-```bash
-npm run build
-# or
-yarn build
-```
+   ```
+   npm install
+   ```
 
-This creates an optimized production build in the `build` folder.
+2. Start development server:
 
-## Customization
+   ```
+   npm run dev
+   ```
 
-The website is designed to be easily customizable:
+3. Build for production:
+   ```
+   npm run build
+   ```
 
-- Color scheme can be modified in `tailwind.config.js`
-- Section content can be updated in the respective component files
-- Images can be replaced in the `/public/images` directory
+## Design Approach
+
+The design combines Mexican vibrancy with Norwegian minimalism, featuring:
+
+- Geometric shapes inspired by Norwegian design
+- Vibrant colors and patterns inspired by Mexican folk art
+- Clean typography and functional layouts for optimal user experience
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Contact
-
-For more information about our influencer-focused digital services:
-
-- Email: contact@brujoinfluence.com
-- Website: [www.brujoinfluence.com](https://www.brujoinfluence.com)
+MIT

@@ -1,165 +1,181 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-interface ServiceCardProps {
-  title: string;
-  description: string;
-  icon: React.ReactNode;
-  delay?: number;
-}
-
-const ServiceCard: React.FC<ServiceCardProps> = ({
-  title,
-  description,
-  icon,
-  delay = 0,
-}) => {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, delay }}
-      className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 group border-b-4 border-primary/70 hover:border-primary"
-      whileHover={{
-        y: -5,
-        transition: { duration: 0.2 },
-      }}
-    >
-      <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
-        {icon}
-      </div>
-      <h3 className="text-2xl font-bold mb-4 group-hover:text-primary transition-colors duration-300">
-        {title}
-      </h3>
-      <p className="text-gray-600 leading-relaxed">{description}</p>
-    </motion.div>
-  );
-};
-
 const Services: React.FC = () => {
+  // Service items with icons, descriptions, and features
+  const services = [
+    {
+      id: 1,
+      icon: (
+        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H4v-4h11v4zm0-5H4V9h11v4zm5 5h-4V9h4v9z" />
+        </svg>
+      ),
+      title: "Custom Influencer Websites",
+      description:
+        "Personalized websites that perfectly capture your brand's unique personality and vision.",
+      features: [
+        "Mobile-optimized responsive design",
+        "SEO-friendly architecture",
+        "Distinctive visual identity",
+        "Fast-loading performance",
+      ],
+      color: "#EC2A4B",
+    },
+    {
+      id: 2,
+      icon: (
+        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z" />
+        </svg>
+      ),
+      title: "Social Media Integration",
+      description:
+        "Seamlessly connect all your social platforms to grow your audience and boost engagement.",
+      features: [
+        "Content aggregation from all platforms",
+        "Automated cross-platform posting",
+        "Engagement analytics dashboard",
+        "Customizable social feed displays",
+      ],
+      color: "#FFC300",
+    },
+    {
+      id: 3,
+      icon: (
+        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
+        </svg>
+      ),
+      title: "Monetization Solutions",
+      description:
+        "Maximize your revenue potential with integrated sponsorship, product, and subscription features.",
+      features: [
+        "Sponsor showcase sections",
+        "Integrated e-commerce functionality",
+        "Membership/subscription management",
+        "Affiliate tracking systems",
+      ],
+      color: "#1A5F7A",
+    },
+    {
+      id: 4,
+      icon: (
+        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M9 11.75c-.69 0-1.25.56-1.25 1.25s.56 1.25 1.25 1.25 1.25-.56 1.25-1.25-.56-1.25-1.25-1.25zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8 0-.29.02-.58.05-.86 2.36-1.05 4.23-2.98 5.21-5.37C11.07 8.33 14.05 10 17.42 10c.78 0 1.53-.09 2.25-.26.21.71.33 1.47.33 2.26 0 4.41-3.59 8-8 8z" />
+        </svg>
+      ),
+      title: "Brand Identity Development",
+      description:
+        "Create a cohesive visual language that makes your personal brand instantly recognizable.",
+      features: [
+        "Logo and identity design",
+        "Color palette development",
+        "Typography selection",
+        "Brand guidelines creation",
+      ],
+      color: "#66D1FF",
+    },
+  ];
+
   return (
     <section
       id="services"
-      className="section bg-gray-50 py-24 relative overflow-hidden"
+      className="py-24 bg-gray-50 relative overflow-hidden"
     >
-      {/* Background decorations */}
-      <div className="absolute -top-20 -right-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
-      <div className="absolute -bottom-32 -left-20 w-80 h-80 bg-secondary/5 rounded-full blur-3xl"></div>
+      {/* Mexican-inspired decorative elements */}
+      <div className="absolute top-0 left-0 w-full h-8 bg-gradient-to-r from-[#EC2A4B] via-[#FFC300] to-[#1A5F7A]"></div>
 
-      <div className="container relative z-10">
-        <div className="text-center mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-          >
-            <h2 className="text-3xl md:text-5xl font-bold mb-5 tracking-tight">
-              Our <span className="text-primary">Services</span>
-            </h2>
-            <div className="w-24 h-1 bg-primary mx-auto mb-8"></div>
-            <p className="text-gray-600 max-w-3xl mx-auto text-lg font-light">
-              We create custom digital solutions for influencers and content
-              creators who want to establish their brand, monetize their
-              influence, and provide unique experiences to their audience.
-            </p>
-          </motion.div>
-        </div>
+      {/* Norwegian-inspired geometric patterns */}
+      <div className="absolute bottom-0 right-0 w-64 h-64 bg-[#1A5F7A] opacity-5 -mb-32 -mr-32 rounded-full"></div>
+      <div className="absolute top-1/3 left-0 w-96 h-96 bg-[#FFC300] opacity-5 -ml-48 rounded-full"></div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
-          <ServiceCard
-            title="Custom Websites"
-            description="Beautiful, responsive websites designed specifically for influencers. Complete with content management systems, analytics, and features that highlight your unique brand."
-            icon={
-              <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
-                <path
-                  fillRule="evenodd"
-                  d="M4.083 9h1.946c.089-1.546.383-2.97.837-4.118A6.004 6.004 0 004.083 9zM10 2a8 8 0 100 16 8 8 0 000-16zm0 2c-.076 0-.232.032-.465.262-.238.234-.497.623-.737 1.182-.389.907-.673 2.142-.766 3.556h3.936c-.093-1.414-.377-2.649-.766-3.556-.24-.56-.5-.948-.737-1.182C10.232 4.032 10.076 4 10 4zm3.971 5c-.089-1.546-.383-2.97-.837-4.118A6.004 6.004 0 0115.917 9h-1.946zm-2.003 2H8.032c.093 1.414.377 2.649.766 3.556.24.56.5.948.737 1.182.233.23.389.262.465.262.076 0 .232-.032.465-.262.238-.234.498-.623.737-1.182.389-.907.673-2.142.766-3.556zm1.166 4.118c.454-1.147.748-2.572.837-4.118h1.946a6.004 6.004 0 01-2.783 4.118zm-6.268 0C6.412 13.97 6.118 12.546 6.03 11H4.083a6.004 6.004 0 002.783 4.118z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            }
-            delay={0.1}
-          />
+      <div className="container mx-auto px-6 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-16"
+        >
+          <span className="text-[#EC2A4B] font-bold text-lg uppercase tracking-wider">
+            What We Offer
+          </span>
+          <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-4">
+            Influencer Services
+          </h2>
+          <div className="h-1 w-24 bg-gradient-to-r from-[#EC2A4B] to-[#FFC300] mx-auto mb-6 rounded-full"></div>
+          <p className="max-w-2xl mx-auto text-gray-600">
+            Tailored digital solutions that blend Mexican creativity with
+            Norwegian functionality to help influencers stand out in a crowded
+            social landscape.
+          </p>
+        </motion.div>
 
-          <ServiceCard
-            title="Monetization Solutions"
-            description="Implement membership areas, digital product shops, subscription models, and affiliate marketing systems to help you maximize your revenue streams."
-            icon={
-              <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
-                <path
-                  fillRule="evenodd"
-                  d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            }
-            delay={0.2}
-          />
-
-          <ServiceCard
-            title="Brand Identity Design"
-            description="Complete brand development including logos, color schemes, typography, and visual guidelines that help you stand out and create a consistent, professional image."
-            icon={
-              <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
-              </svg>
-            }
-            delay={0.3}
-          />
-
-          <ServiceCard
-            title="Mobile App Development"
-            description="Custom mobile applications that give your audience a premium experience. Perfect for content delivery, community building, and exclusive access to your products."
-            icon={
-              <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
-                <path d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V5a1 1 0 00-1-1H3zM14 7a1 1 0 00-1 1v6.05A2.5 2.5 0 0115.95 16H17a1 1 0 001-1v-5a1 1 0 00-.293-.707l-2-2A1 1 0 0015 7h-1z" />
-              </svg>
-            }
-            delay={0.4}
-          />
-
-          <ServiceCard
-            title="Analytics & Growth"
-            description="Implement comprehensive analytics solutions to track engagement, monitor your audience growth, and gain insights to optimize your content strategy."
-            icon={
-              <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z" />
-                <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z" />
-              </svg>
-            }
-            delay={0.5}
-          />
-
-          <ServiceCard
-            title="Social Integration"
-            description="Seamless connection between your website and social platforms with cross-posting capabilities, social feeds, and integrated analytics for your entire digital presence."
-            icon={
-              <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M6.29 18.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0020 3.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.073 4.073 0 01.8 7.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 010 16.407a11.616 11.616 0 006.29 1.84" />
-              </svg>
-            }
-            delay={0.6}
-          />
-        </div>
-
-        <div className="text-center mt-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.7 }}
-          >
-            <a
-              href="#contact"
-              className="btn btn-primary text-lg px-8 py-4 hover:shadow-glow hover:translate-y-[-2px] transition-all duration-300"
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {services.map((service, index) => (
+            <motion.div
+              key={service.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="bg-white rounded-2xl shadow-xl overflow-hidden group"
             >
-              Schedule a Consultation
-            </a>
-          </motion.div>
+              <div
+                className="p-8"
+                style={{ borderTop: `4px solid ${service.color}` }}
+              >
+                <div
+                  className="w-16 h-16 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
+                  style={{
+                    backgroundColor: `${service.color}20`,
+                    color: service.color,
+                  }}
+                >
+                  {service.icon}
+                </div>
+                <h3 className="text-xl font-bold mb-3">{service.title}</h3>
+                <p className="text-gray-600 mb-6">{service.description}</p>
+
+                <ul className="space-y-2">
+                  {service.features.map((feature, idx) => (
+                    <li key={idx} className="flex items-start">
+                      <svg
+                        className="w-5 h-5 mr-2 mt-0.5"
+                        style={{ color: service.color }}
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                      <span className="text-gray-700 text-sm">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
+          ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+          className="mt-16 text-center"
+        >
+          <a
+            href="#contact"
+            className="inline-block bg-[#1A5F7A] hover:bg-[#1A5F7A]/90 text-white font-semibold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+          >
+            Get a Custom Quote
+          </a>
+        </motion.div>
       </div>
     </section>
   );

@@ -9,9 +9,10 @@ const Header: React.FC = () => {
   const navItems = [
     { href: "#home", label: "Home" },
     { href: "#services", label: "Services" },
+    { href: "#features", label: "Features" },
     { href: "#portfolio", label: "Portfolio" },
-    { href: "#about", label: "About" },
-    { href: "#testimonials", label: "Success Stories" },
+    { href: "#showcase", label: "Tech Stack" },
+    { href: "#about", label: "About Us" },
     { href: "#contact", label: "Contact" },
   ];
 
@@ -35,9 +36,11 @@ const Header: React.FC = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-white shadow-md py-3" : "bg-transparent py-6"}`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled ? "bg-white shadow-md py-3" : "bg-transparent py-6"
+      }`}
     >
-      <div className="container mx-auto px-4 flex justify-between items-center">
+      <div className="container mx-auto px-6 flex justify-between items-center">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -56,10 +59,12 @@ const Header: React.FC = () => {
             <a
               key={index}
               href={item.href}
-              className={`font-medium hover:text-primary transition-colors relative group ${isScrolled ? "text-gray-800" : "text-white"}`}
+              className={`font-medium hover:text-[#EC2A4B] transition-colors relative group ${
+                isScrolled ? "text-gray-800" : "text-white"
+              }`}
             >
               {item.label}
-              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-[#1A5F7A] to-[#EC2A4B] transition-all duration-300 group-hover:w-full"></span>
             </a>
           ))}
         </motion.nav>
@@ -71,9 +76,9 @@ const Header: React.FC = () => {
         >
           <a
             href="#contact"
-            className="hidden md:flex items-center px-6 py-3 font-medium text-white bg-primary rounded-full hover:bg-primary-dark transition-all duration-300 shadow-md hover:shadow-lg hover:translate-y-[-2px]"
+            className="hidden md:flex items-center px-6 py-3 font-medium text-white bg-[#1A5F7A] rounded-lg hover:bg-[#1A5F7A]/90 transition-all duration-300 shadow-md hover:shadow-lg hover:translate-y-[-2px]"
           >
-            <span>Elevate Your Brand</span>
+            <span>Get a Quote</span>
             <svg
               className="w-4 h-4 ml-2"
               fill="none"
@@ -91,11 +96,13 @@ const Header: React.FC = () => {
 
           {/* Mobile menu button */}
           <button
-            className="md:hidden p-2 rounded-full text-gray-700 hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/40"
+            className="md:hidden p-2 rounded-full text-gray-700 hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-[#1A5F7A]/40"
             onClick={toggleMenu}
           >
             <svg
-              className={`w-6 h-6 ${isScrolled ? "text-gray-800" : "text-white"}`}
+              className={`w-6 h-6 ${
+                isScrolled ? "text-gray-800" : "text-white"
+              }`}
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -136,7 +143,7 @@ const Header: React.FC = () => {
                   <a
                     key={index}
                     href={item.href}
-                    className="font-medium text-gray-800 hover:text-primary transition-colors py-2 border-b border-gray-100"
+                    className="font-medium text-gray-800 hover:text-[#EC2A4B] transition-colors py-2 border-b border-gray-100"
                     onClick={(e) => {
                       // Close the menu
                       setIsMenuOpen(false);
@@ -160,7 +167,7 @@ const Header: React.FC = () => {
 
                 <a
                   href="#contact"
-                  className="flex items-center justify-center px-6 py-3 font-medium text-white bg-primary rounded-lg hover:bg-primary-dark transition-all duration-300 mt-4"
+                  className="flex items-center justify-center px-6 py-3 font-medium text-white bg-[#EC2A4B] rounded-lg hover:bg-[#EC2A4B]/90 transition-all duration-300 mt-4"
                   onClick={(e) => {
                     // Close the menu
                     setIsMenuOpen(false);
@@ -177,7 +184,7 @@ const Header: React.FC = () => {
                     }
                   }}
                 >
-                  <span>Elevate Your Brand</span>
+                  <span>Get a Quote</span>
                   <svg
                     className="w-4 h-4 ml-2"
                     fill="none"
