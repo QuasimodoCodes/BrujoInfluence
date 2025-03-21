@@ -1,8 +1,8 @@
 import React from "react";
 import ContactSection from "./ContactSection";
 
-const Contact: React.FC = () => {
+function Contact() {
   return <ContactSection />;
-};
+}
 
 export default Contact;
