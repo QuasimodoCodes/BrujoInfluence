@@ -7,6 +7,12 @@ const textShadowStyle = {
     "0 0 10px rgba(0, 0, 0, 0.8), 0 0 15px rgba(236, 42, 75, 0.5), 0 0 3px rgba(0, 0, 0, 1)",
 };
 
+// Style for the INFLUENCE text with better contrast
+const influenceTextStyle = {
+  textShadow:
+    "0 0 10px rgba(0, 0, 0, 0.9), 0 0 5px rgba(0, 0, 0, 0.7), 0 0 15px rgba(255, 195, 0, 0.6)",
+};
+
 const Hero: React.FC = () => {
   return (
     <section id="home" className="relative min-h-screen overflow-hidden">
@@ -61,7 +67,9 @@ const Hero: React.FC = () => {
                 ></motion.span>
               </span>
               <br className="hidden md:block" />
-              <span className="text-[#66D1FF]">INFLUENCE</span>
+              <span className="text-[#FFC300]" style={influenceTextStyle}>
+                INFLUENCE
+              </span>
             </h1>
 
             <div className="mt-6 mb-12">

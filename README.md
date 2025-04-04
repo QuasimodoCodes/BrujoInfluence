@@ -112,3 +112,9 @@ jobs:
 ## 📄 License
 
 MIT
+
+## Deployment
+
+This site is deployed on GitHub Pages: [https://quasimodocodes.github.io/BrujoInfluence/](https://quasimodocodes.github.io/BrujoInfluence/)
+
+Last updated: March 21, 2025
